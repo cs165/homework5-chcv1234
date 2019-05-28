@@ -6,7 +6,7 @@ const key = require('./privateSettings.json');
 
 // TODO(you): Change the value of this string to the spreadsheet id for your
 // GSA spreadsheet. See HW5 spec for more information.
-const SPREADSHEET_ID = '__YOUR__SPREADSHEET__ID__HERE__';
+const SPREADSHEET_ID = '18afXzIplEZzLgJKSaErx1F_Z82awWyQ-h0GkahFuF7g';
 
 const app = express();
 const jsonParser = bodyParser.json();
