@@ -21,7 +21,7 @@ async function onGet(req, res) {
 
   // TODO(you): Finish onGet.
 
-  res.json( { status: 'unimplemented'} );
+  res.json( { status: 'unimplemented!!!'} );
 }
 app.get('/api', onGet);
 
@@ -60,5 +60,5 @@ app.delete('/api/:column/:value',  onDelete);
 const port = process.env.PORT || 3000;
 
 app.listen(port, function () {
-  console.log(`Server listening on port ${port}!`);
+  console.log(`Dsino: Server listening on port ${port}!`);
 });
