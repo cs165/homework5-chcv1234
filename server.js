@@ -59,11 +59,17 @@ async function onPost(req, res) {
     console.log(keyinput);
     console.log(valueinput);
 
+  for(let i=0 ; i<keyinput.length ; i++)
+  {
+	keyinput[i] = keyinput[i].toLowerCase() ;
+  }
+
+
   while( n < keyinput.length)
   {
     for(let i=0 ; i<rows[0].length; i++)
     {
-      if(rows[0][i] === keyinput[n])
+      if(rows[0][i].toLowerCase() === keyinput[n] )
       {
         postrow[i] = valueinput[n];
         n++ ;
@@ -96,9 +102,17 @@ async function onPatch(req, res) {
 
   // TODO(you): Implement onPatch.
 
+/*
+  for(let i=0 ; i<keyinput.length ; i++)
+  {
+    keyinput[i] = keyinput[i].toLowerCase();
+  }
+*/
+
+
   for(let i=0 ; i<rows[0].length;i++)
   {
-      if(rows[0][i] === column)
+      if(rows[0][i].toLowerCase() === column.toLowerCase())
       {
           beupdate1 = i ;
           break ;
@@ -107,7 +121,7 @@ async function onPatch(req, res) {
 
   for(let i=1 ; i<rows.length; i++)
   {
-    if(rows[i][beupdate1] === value)
+    if(rows[i][beupdate1].toLowerCase() === value.toLowerCase())
     {
       beupdate2 = i ;
       break ;
@@ -120,7 +134,7 @@ async function onPatch(req, res) {
     {
         for(let i=0 ; i<rows[0].length; i++)
         {
-            if(rows[0][i] === keyinput[n])
+            if(rows[0][i].toLowerCase() === keyinput[n].toLowerCase())
             {
                 patchrow[i] = valueinput[n];
                 n++ ;
@@ -143,6 +157,10 @@ async function onDelete(req, res) {
   const result = await sheet.getRows();
   const rows = result.rows ;
 
+ // let lowcolumn = column.toLowerCase();
+ // let lowvlaue = value.toLowerCase();
+
+
   let bedelete ;
 
   // TODO(you): Implement onDelete.
@@ -152,7 +170,7 @@ async function onDelete(req, res) {
 
     for(let i=0 ; i<rows[0].length; i++)
     {
-      if(rows[0][i] === column)
+      if(rows[0][i].toLowerCase() === column.toLowerCase())
       {
         bedelete = i ;
         break ;
@@ -161,7 +179,7 @@ async function onDelete(req, res) {
 
     for(let i=0 ; i<rows.length; i++)
     {
-      if(rows[i][bedelete] === value)
+      if(rows[i][bedelete].toLowerCase() === value.toLowerCase())
       {
         await sheet.deleteRow(i);
         res.json({"response": "success" });
